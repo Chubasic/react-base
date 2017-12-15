@@ -7,8 +7,10 @@ var APP_DIR = path.resolve(__dirname, 'src/app');
 var config = {
   entry: APP_DIR + '/index.jsx',
   output: {
-    path: BUILD_DIR,
-    filename: 'bundle.js',
+      path: BUILD_DIR,
+      filename: 'bundle.js',
+      publicPath: "/static/"
+  },
     devServer: {
         proxy: [{
             path: '/api/',
@@ -16,8 +18,8 @@ var config = {
         }],
         historyApiFallback: true
     },
-     module : {
-      loaders : [
+    module: {
+        loaders: [
             {
                 test: /\.js/,
                 loaders: ['babel-loader'],
@@ -27,8 +29,8 @@ var config = {
                 test: /\.css/,
                 loaders: ['style-loader', 'css-loader'],
             }
-     ]
-   }
+        ]
+    }
 };
 
 module.exports = config;
